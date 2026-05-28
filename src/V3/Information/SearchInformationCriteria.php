@@ -32,7 +32,7 @@ class SearchInformationCriteria extends Criteria
     {
         Assert::positiveInteger($id, 'Category ID must be an integer');
 
-        return $this->cloneWithFilter('category', $id);
+        return $this->cloneWithParam('category', $id);
     }
 
     public function onlyStatus(string $status): self
@@ -40,7 +40,7 @@ class SearchInformationCriteria extends Criteria
         Assert::notEmpty($status, 'Status must be a non-empty string');
         Assert::inArray($status, self::ALLOW_STATUS, 'Status must be active or hide');
 
-        return $this->cloneWithFilter('status', $status);
+        return $this->cloneWithParam('status', $status);
     }
 
     public function onlyMaterials(array $ids): self
@@ -49,7 +49,7 @@ class SearchInformationCriteria extends Criteria
         Assert::allPositiveInteger($ids, 'Materials must be an array of positive integers');
         Assert::maxCount($ids, 500, 'Materials must be less than 500');
 
-        return $this->cloneWithFilter('materials', $ids);
+        return $this->cloneWithParam('materials', $ids);
     }
 
     public function method(): string
