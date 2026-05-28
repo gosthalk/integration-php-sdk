@@ -50,7 +50,7 @@ class TrackSearchCriteria extends Criteria
         Assert::notEmpty($status, 'Track status required.');
         Assert::inArray($status, self::TRACK_STATUS, 'Track status invalid. Use active or hide.');
 
-        return $this->cloneWithParam('status', $status);
+        return $this->cloneWithFilter('status', $status);
     }
 
     public function onlyIdFilter(array $ids): self
